@@ -22,9 +22,9 @@ public class MainWindow {
     private JButton createButton;
     private JButton deleteButton;
     private JButton editButton;
-    private JTable tableDisks;
+    private JScrollPane scrollPaneBooks;
+    private JTable table1;
     private JTable tableBooks;
-
 
     public MainWindow() {
         /*button1.addActionListener(new ActionListener() {
@@ -36,12 +36,9 @@ public class MainWindow {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                   CreateDialog createDialog=new CreateDialog();
-                   createDialog.pack();
-                   createDialog.setVisible(true);
+                scrollPaneBooks.setViewportView(createTable());
             }
         });
-
     }
     private JMenuBar createMenu() {
         //hlavní úroveň menu
@@ -103,6 +100,17 @@ public class MainWindow {
                 frame.setJMenuBar(thisWindow.createMenu());
             }
         });
+    }
+
+
+    public static JTable createTable()
+    {
+        String[] columnNames = {"Name", "Author"};
+        Object[][] data = {{"Kathy", "Smith"},{"John", "Doe"}};
+        JTable table = new JTable(data, columnNames);
+        table.setFillsViewportHeight(true);
+
+        return table;
     }
 
 
