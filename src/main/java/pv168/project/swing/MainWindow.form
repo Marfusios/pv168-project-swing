@@ -100,7 +100,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="7cdf6" class="javax.swing.JTable" binding="table1" default-binding="true">
+                      <component id="7cdf6" class="javax.swing.JTable" binding="tableDisks">
                         <constraints/>
                         <properties/>
                       </component>

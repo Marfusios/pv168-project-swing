@@ -22,8 +22,9 @@ public class MainWindow {
     private JButton createButton;
     private JButton deleteButton;
     private JButton editButton;
-    private JTable table1;
+    private JTable tableDisks;
     private JTable tableBooks;
+
 
     public MainWindow() {
         /*button1.addActionListener(new ActionListener() {
@@ -35,9 +36,12 @@ public class MainWindow {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                   CreateDialog createDialog=new CreateDialog();
+                   createDialog.pack();
+                   createDialog.setVisible(true);
             }
         });
+
     }
     private JMenuBar createMenu() {
         //hlavní úroveň menu
