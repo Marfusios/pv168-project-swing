@@ -22,8 +22,8 @@ public class MainWindow {
     private JButton createButton;
     private JButton deleteButton;
     private JButton editButton;
-    private JTable table2;
     private JTable table1;
+    private JTable tableBooks;
 
     public MainWindow() {
         /*button1.addActionListener(new ActionListener() {
@@ -32,6 +32,12 @@ public class MainWindow {
                 System.out.println("tlačítko zmáčknuto");
             }
         });  */
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
     private JMenuBar createMenu() {
         //hlavní úroveň menu
