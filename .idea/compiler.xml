@@ -28,6 +28,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="pv168-project" target="1.7" />
+      <module name="pv168-project-swing" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
