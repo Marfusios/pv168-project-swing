@@ -23,7 +23,7 @@ public class MainWindow {
     private JButton deleteButton;
     private JButton editButton;
     private JScrollPane scrollPaneBooks;
-    private JTable table1;
+    private JTable tableDisks;
     private JTable tableBooks;
 
     public MainWindow() {
@@ -33,10 +33,14 @@ public class MainWindow {
                 System.out.println("tlačítko zmáčknuto");
             }
         });  */
+        tableBooks=createTable();
+        scrollPaneBooks.setViewportView(tableBooks);
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                scrollPaneBooks.setViewportView(createTable());
+                     CreateDialog dialog= new CreateDialog();
+                     dialog.pack();
+                     dialog.setVisible(true);
             }
         });
     }
