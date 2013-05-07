@@ -17,9 +17,11 @@ public class MainWindow {
     private JTabbedPane tabbedPane1;
     private JPanel tabBooks;
     private JPanel tabDisks;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+    private JButton createButton;
+    private JButton deleteButton;
+    private JButton editButton;
+    private JTable table2;
+    private JTable table1;
 
     public MainWindow() {
         /*button1.addActionListener(new ActionListener() {

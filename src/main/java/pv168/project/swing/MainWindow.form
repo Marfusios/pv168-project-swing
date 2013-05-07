@@ -24,28 +24,28 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="4acb2" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="4acb2" class="javax.swing.JButton" binding="createButton" default-binding="true">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Create"/>
                 </properties>
               </component>
-              <component id="b4838" class="javax.swing.JButton" binding="button2" default-binding="true">
+              <component id="b4838" class="javax.swing.JButton" binding="deleteButton" default-binding="true">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Delete"/>
                 </properties>
               </component>
-              <component id="d639b" class="javax.swing.JButton" binding="button3" default-binding="true">
+              <component id="d639b" class="javax.swing.JButton" binding="editButton" default-binding="true">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Edit"/>
                 </properties>
               </component>
               <vspacer id="bc567">
@@ -76,7 +76,12 @@
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="a62ed" class="javax.swing.JTable" binding="table2" default-binding="true">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
                   </scrollpane>
                 </children>
               </grid>
@@ -88,13 +93,18 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <scrollpane id="86276">
+                  <scrollpane id="a5ed">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="7cdf6" class="javax.swing.JTable" binding="table1" default-binding="true">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
                   </scrollpane>
                 </children>
               </grid>
@@ -107,7 +117,12 @@
           </hspacer>
         </children>
       </grid>
-      <grid id="23b32" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <vspacer id="8fe4d">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="be61a" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -116,11 +131,6 @@
         <border type="none"/>
         <children/>
       </grid>
-      <vspacer id="8fe4d">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
     </children>
   </grid>
 </form>
