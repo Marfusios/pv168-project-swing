@@ -86,7 +86,7 @@
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="23caa" class="javax.swing.JTextPane" binding="genreTextPane" default-binding="true">
+          <component id="23caa" class="javax.swing.JTextPane" binding="stylTextPane" default-binding="true">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
@@ -94,10 +94,10 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <text value="Genre"/>
+              <text resource-bundle="pv168/project/swing/Bundle" key="my.Genre"/>
             </properties>
           </component>
-          <component id="8582e" class="javax.swing.JTextPane" binding="titleTextPane" default-binding="true">
+          <component id="8582e" class="javax.swing.JTextPane" binding="názevTextPane" default-binding="true">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
@@ -105,10 +105,10 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <text value="Title"/>
+              <text resource-bundle="pv168/project/swing/Bundle" key="my.Title"/>
             </properties>
           </component>
-          <component id="3081e" class="javax.swing.JTextPane" binding="authorTextPane" default-binding="true">
+          <component id="3081e" class="javax.swing.JTextPane" binding="autorTextPane" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
@@ -116,10 +116,10 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <text value="Author"/>
+              <text resource-bundle="pv168/project/swing/Bundle" key="my.Author"/>
             </properties>
           </component>
-          <component id="fa031" class="javax.swing.JTextPane" binding="releaseYearTextPane" default-binding="true">
+          <component id="fa031" class="javax.swing.JTextPane" binding="rokVydáníTextPane" default-binding="true">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
@@ -127,14 +127,16 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <text value="Release year"/>
+              <text resource-bundle="pv168/project/swing/Bundle" key="my.ReleaseYear"/>
             </properties>
           </component>
           <component id="6c3a6" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <model/>
+            </properties>
           </component>
         </children>
       </grid>

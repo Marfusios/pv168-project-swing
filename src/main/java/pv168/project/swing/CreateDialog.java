@@ -1,5 +1,6 @@
 package pv168.project.swing;
 
+import pv168.project.GenreEnum;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -10,10 +11,10 @@ public class CreateDialog extends JDialog {
     private JTextField textField1;
     private JTextField textField3;
     private JTextField textField4;
-    private JTextPane genreTextPane;
-    private JTextPane titleTextPane;
-    private JTextPane authorTextPane;
-    private JTextPane releaseYearTextPane;
+    private JTextPane stylTextPane;
+    private JTextPane názevTextPane;
+    private JTextPane autorTextPane;
+    private JTextPane rokVydáníTextPane;
     private JComboBox comboBox1;
 
     public CreateDialog() {
@@ -21,6 +22,7 @@ public class CreateDialog extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
+        comboBox1.setModel(new DefaultComboBoxModel(GenreEnum.values()));
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();

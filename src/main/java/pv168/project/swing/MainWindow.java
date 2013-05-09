@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,8 +22,8 @@ public class MainWindow {
     private JPanel tabBooks;
     private JPanel tabDisks;
     private JButton createButton;
-    private JButton deleteButton;
-    private JButton editButton;
+    private JButton smazatButton;
+    private JButton upravitButton;
     private JScrollPane scrollPaneBooks;
     private JTable tableDisks;
     private JTable tableBooks;
@@ -33,7 +35,7 @@ public class MainWindow {
                 System.out.println("tlačítko zmáčknuto");
             }
         });  */
-        tableBooks=createTable();
+
         scrollPaneBooks.setViewportView(tableBooks);
         createButton.addActionListener(new ActionListener() {
             @Override
@@ -118,4 +120,7 @@ public class MainWindow {
     }
 
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

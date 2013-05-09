@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="topPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="424"/>
+      <xy x="20" y="20" width="575" height="424"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -29,23 +29,23 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Create"/>
+                  <text resource-bundle="pv168/project/swing/Bundle" key="my.Create"/>
                 </properties>
               </component>
-              <component id="b4838" class="javax.swing.JButton" binding="deleteButton" default-binding="true">
+              <component id="b4838" class="javax.swing.JButton" binding="smazatButton" default-binding="true">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Delete"/>
+                  <text resource-bundle="pv168/project/swing/Bundle" key="my.Delete"/>
                 </properties>
               </component>
-              <component id="d639b" class="javax.swing.JButton" binding="editButton" default-binding="true">
+              <component id="d639b" class="javax.swing.JButton" binding="upravitButton" default-binding="true">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Edit"/>
+                  <text resource-bundle="pv168/project/swing/Bundle" key="my.Update"/>
                 </properties>
               </component>
               <vspacer id="bc567">
@@ -59,13 +59,15 @@
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value=""/>
+            </properties>
             <border type="none"/>
             <children>
               <grid id="1d6d6" binding="tabBooks" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <tabbedpane title="Books"/>
+                  <tabbedpane title-resource-bundle="pv168/project/swing/Bundle" title-key="my.Books"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -83,7 +85,7 @@
               <grid id="5596d" binding="tabDisks" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <tabbedpane title="Disks"/>
+                  <tabbedpane title-resource-bundle="pv168/project/swing/Bundle" title-key="my.Disks"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
