@@ -24,7 +24,6 @@ public class MainWindow {
     private JButton createButton;
     private JButton smazatButton;
     private JButton upravitButton;
-    private JScrollPane scrollPaneBooks;
     private JTable tableDisks;
     private JTable tableBooks;
 
