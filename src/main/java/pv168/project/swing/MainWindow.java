@@ -35,8 +35,8 @@ public class MainWindow {
                 System.out.println("tlačítko zmáčknuto");
             }
         });  */
-
-        scrollPaneBooks.setViewportView(tableBooks);
+        tableDisks.setModel(new DisksTableModel());
+        tableBooks.setModel(new BooksTableModel());
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,16 +108,6 @@ public class MainWindow {
         });
     }
 
-
-    public static JTable createTable()
-    {
-        String[] columnNames = {"Name", "Author"};
-        Object[][] data = {{"Kathy", "Smith"},{"John", "Doe"}};
-        JTable table = new JTable(data, columnNames);
-        table.setFillsViewportHeight(true);
-
-        return table;
-    }
 
 
     private void createUIComponents() {

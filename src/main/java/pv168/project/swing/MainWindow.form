@@ -78,7 +78,12 @@
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="7d132" class="javax.swing.JTable" binding="tableBooks">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
                   </scrollpane>
                 </children>
               </grid>

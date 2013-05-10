@@ -11,10 +11,6 @@ public class CreateDialog extends JDialog {
     private JTextField textField1;
     private JTextField textField3;
     private JTextField textField4;
-    private JTextPane stylTextPane;
-    private JTextPane názevTextPane;
-    private JTextPane autorTextPane;
-    private JTextPane rokVydáníTextPane;
     private JComboBox comboBox1;
 
     public CreateDialog() {
