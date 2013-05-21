@@ -1,6 +1,8 @@
 package pv168.project.swing;
 
 
+import pv168.project.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,17 +30,47 @@ public class MainWindow {
     private JButton diskCreateButton;
     private JButton diskDeleteButton;
     private JButton diskUpdateButton;
+    static MainWindow thisWindow;
+    private DisksTableModel modelDisks;
+    private BooksTableModel modelBooks;
+
+    private ManagerEntities managerEntities;
+    public ManagerEntities getManagerEntities() {
+        return managerEntities;
+    }
+
+    public JTable getTableBooks() {
+        return tableBooks;
+    }
+    public JTable getTableDisks() {
+        return tableDisks;
+    }
+
+    public DisksTableModel getModelDisks() {
+        return modelDisks;
+    }
+
+    public BooksTableModel getModelBooks() {
+        return modelBooks;
+    }
 
     public MainWindow() {
-        /*button1.addActionListener(new ActionListener() {
+        ManagerDB.startServer();
+        ManagerDB.createDatabase();
+        managerEntities = new ManagerEntitiesImpl();
+
+
+       /* bookCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("tlačítko zmáčknuto");
+
             }
         });  */
-        tableDisks.setModel(new DisksTableModel());
-        tableBooks.setModel(new BooksTableModel());
+
+        setModelsToTables();
+        setEditableCells();
     }
+
     private JMenuBar createMenu() {
         //hlavní úroveň menu
         ResourceBundle rb = ResourceBundle.getBundle("pv168.project.swing.Bundle");
@@ -89,7 +121,8 @@ public class MainWindow {
 
     public static void main(String[] args) {
         final ResourceBundle rb = ResourceBundle.getBundle("pv168.project.swing.Bundle");
-        final MainWindow  thisWindow = new MainWindow();
+        thisWindow = new MainWindow();
+
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -100,15 +133,59 @@ public class MainWindow {
                 frame.pack();
                 frame.setVisible(true);
                 frame.setJMenuBar(thisWindow.createMenu());
-
             }
         });
 
+        loadAllDataFromDB();
     }
 
 
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+    }
+
+
+    private void setModelsToTables()
+    {
+        modelDisks = new DisksTableModel();
+        tableDisks.setModel(modelDisks);
+
+        modelBooks = new BooksTableModel();
+        tableBooks.setModel(modelBooks);
+    }
+
+    private void setEditableCells()
+    {
+        JComboBox genreComboBox = new JComboBox();
+        for (GenreEnum f : GenreEnum.values()) {
+            genreComboBox.addItem(f);
+        }
+        tableBooks.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(genreComboBox));
+        tableDisks.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(genreComboBox));
+
+        JComboBox kindComboBox = new JComboBox();
+        for (KindEnum f : KindEnum.values()) {
+            kindComboBox.addItem(f);
+        }
+        tableDisks.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(kindComboBox));
+
+        JComboBox typeComboBox = new JComboBox();
+        for (TypeEnum f : TypeEnum.values()) {
+            typeComboBox.addItem(f);
+        }
+        tableDisks.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(typeComboBox));
+    }
+
+    private static void loadAllDataFromDB()
+    {
+        LoadFromDBSwingWorker swingWorker = new LoadFromDBSwingWorker();
+        swingWorker.execute();
+    }
+
+    private static void saveAllDataToDB()
+    {
+        SaveToDBSwingWorker swingWorker = new SaveToDBSwingWorker();
+        swingWorker.execute();
     }
 }

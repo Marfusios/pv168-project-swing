@@ -96,4 +96,64 @@ public class DisksTableModel extends AbstractTableModel{
         }
     }
 
+    public void addDisk(Disk input) {
+        disks.add(input);
+        int lastRow = disks.size() - 1;
+
+        fireTableRowsInserted(lastRow, lastRow);
+    }
+
+    public void removeAll()
+    {
+        this.disks.clear();
+    }
+
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Disk disk = disks.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                disk.setAuthor((String) aValue);
+                break;
+            case 1:
+                disk.setName((String) aValue);
+                break;
+            case 2:
+                disk.setReleaseYear((Date) aValue);
+                break;
+            case 3:
+                disk.setGenre((GenreEnum) aValue);
+                break;
+            case 4:
+                disk.setKind((KindEnum) aValue);
+                break;
+            case 5:
+                disk.setType((TypeEnum)aValue);
+                break;
+            case 6:
+                disk.setPosition((String) aValue);
+                break;
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                return true;
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+    }
+
 }

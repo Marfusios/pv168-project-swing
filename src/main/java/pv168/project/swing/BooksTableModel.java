@@ -4,7 +4,10 @@ import pv168.project.Book;
 import pv168.project.GenreEnum;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created with IntelliJ IDEA.
@@ -87,4 +90,66 @@ public class BooksTableModel extends AbstractTableModel{
                 throw new IllegalArgumentException("columnIndex");
         }
     }
+
+    public void addBook(Book input) {
+        books.add(input);
+        int lastRow = books.size() - 1;
+
+        fireTableRowsInserted(lastRow, lastRow);
+    }
+
+    public void addBooks(List<Book> input)
+    {
+        this.books = input;
+    }
+
+    public void removeAll()
+    {
+        this.books.clear();
+    }
+
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Book book = books.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                book.setAuthor((String) aValue);
+                break;
+            case 1:
+                book.setName((String) aValue);
+                break;
+            case 2:
+                book.setReleaseYear((Date) aValue);
+                break;
+            case 3:
+                book.setGenre((GenreEnum) aValue);
+                break;
+            case 4:
+                book.setPageCount((Integer) aValue);
+                break;
+            case 5:
+                book.setPosition((String) aValue);
+                break;
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                return true;
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+    }
+
 }
