@@ -1,6 +1,10 @@
 package pv168.project.swing;
 
 import pv168.project.Disk;
+import pv168.project.GenreEnum;
+import pv168.project.KindEnum;
+import pv168.project.TypeEnum;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.*;
 
@@ -66,6 +70,27 @@ public class DisksTableModel extends AbstractTableModel{
                 return disk.getType();
             case 6:
                 return disk.getPosition();
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+            case 1:
+                return String.class;
+            case 2:
+                return Date.class;
+            case 3:
+                return GenreEnum.class;
+            case 4:
+                return KindEnum.class;
+            case 5:
+                return TypeEnum.class;
+            case 6:
+                return String.class;
             default:
                 throw new IllegalArgumentException("columnIndex");
         }

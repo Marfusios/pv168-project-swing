@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -20,12 +19,15 @@ public class MainWindow {
     private JPanel topPanel;
     private JTabbedPane tabbedPane1;
     private JPanel tabBooks;
-    private JPanel tabDisks;
-    private JButton createButton;
-    private JButton smazatButton;
-    private JButton upravitButton;
+    private JButton bookCreateButton;
     private JTable tableDisks;
     private JTable tableBooks;
+    private JButton bookDeleteButton;
+    private JButton bookUpdateButton;
+    private JPanel tabDisks;
+    private JButton diskCreateButton;
+    private JButton diskDeleteButton;
+    private JButton diskUpdateButton;
 
     public MainWindow() {
         /*button1.addActionListener(new ActionListener() {
@@ -36,27 +38,21 @@ public class MainWindow {
         });  */
         tableDisks.setModel(new DisksTableModel());
         tableBooks.setModel(new BooksTableModel());
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                     CreateDialog dialog= new CreateDialog();
-                     dialog.pack();
-                     dialog.setVisible(true);
-            }
-        });
     }
     private JMenuBar createMenu() {
         //hlavní úroveň menu
+        ResourceBundle rb = ResourceBundle.getBundle("pv168.project.swing.Bundle");
         JMenuBar menuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
-        final JMenu helpMenu = new JMenu("Help");
-        JMenu lafMenu = new JMenu("Look and feel");
+        JMenu fileMenu = new JMenu(rb.getString("File"));
+        final JMenu helpMenu = new JMenu(rb.getString("Help"));
+        JMenu lafMenu = new JMenu(rb.getString("LaF"));
         menuBar.add(fileMenu);
         menuBar.add(lafMenu);
         menuBar.add(helpMenu);
         menuBar.add(Box.createHorizontalGlue());
+
         //menu File
-        JMenuItem exitMenuItem = new JMenuItem("Exit");
+        JMenuItem exitMenuItem = new JMenuItem(rb.getString("Exit"));
         fileMenu.add(exitMenuItem);
         exitMenuItem.addActionListener(new ActionListener() {
             @Override
@@ -92,19 +88,22 @@ public class MainWindow {
     }
 
     public static void main(String[] args) {
+        final ResourceBundle rb = ResourceBundle.getBundle("pv168.project.swing.Bundle");
         final MainWindow  thisWindow = new MainWindow();
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame frame = new JFrame("Home evidency");
+                JFrame frame = new JFrame(rb.getString("Nazev"));
                 frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 frame.setContentPane(thisWindow.topPanel);
                 frame.setPreferredSize(new Dimension(800,600));
                 frame.pack();
                 frame.setVisible(true);
                 frame.setJMenuBar(thisWindow.createMenu());
+
             }
         });
+
     }
 
 

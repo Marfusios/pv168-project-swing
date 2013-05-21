@@ -1,6 +1,8 @@
 package pv168.project.swing;
 
 import pv168.project.Book;
+import pv168.project.GenreEnum;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.*;
 
@@ -67,4 +69,22 @@ public class BooksTableModel extends AbstractTableModel{
         }
     }
 
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+            case 1:
+                return String.class;
+            case 2:
+                return Date.class;
+            case 3:
+                return GenreEnum.class;
+            case 4:
+                return Integer.class;
+            case 5:
+                return String.class;
+            default:
+                throw new IllegalArgumentException("columnIndex");
+        }
+    }
 }
