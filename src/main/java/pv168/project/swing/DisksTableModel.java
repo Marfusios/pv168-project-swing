@@ -108,6 +108,11 @@ public class DisksTableModel extends AbstractTableModel{
         this.disks.clear();
     }
 
+    public List<Disk> getAll()
+    {
+        return disks;
+    }
+
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {

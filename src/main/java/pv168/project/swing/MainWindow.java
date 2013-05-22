@@ -4,6 +4,8 @@ package pv168.project.swing;
 import pv168.project.*;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,17 +35,17 @@ public class MainWindow {
     static MainWindow thisWindow;
     private DisksTableModel modelDisks;
     private BooksTableModel modelBooks;
+    private boolean isSaveAble = false;
+    public boolean isSaveAble() {
+        return isSaveAble;
+    }
+    public void setSaveAble(boolean saveAble) {
+        isSaveAble = saveAble;
+    }
 
     private ManagerEntities managerEntities;
     public ManagerEntities getManagerEntities() {
         return managerEntities;
-    }
-
-    public JTable getTableBooks() {
-        return tableBooks;
-    }
-    public JTable getTableDisks() {
-        return tableDisks;
     }
 
     public DisksTableModel getModelDisks() {
@@ -60,12 +62,34 @@ public class MainWindow {
         managerEntities = new ManagerEntitiesImpl();
 
 
-       /* bookCreateButton.addActionListener(new ActionListener() {
+       bookCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new CreateDialog().setVisible(true);
             }
-        });  */
+        });
+
+        bookUpdateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tableBooks.getSelectedRow() >= 0)
+                {
+                    new CreateDialog(modelBooks.getBookAt(tableBooks.getSelectedRow())).setVisible(true);
+                }
+            }
+        });
+
+        bookDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tableBooks.getSelectedRow() >= 0)
+                {
+                    modelBooks.removeAt(tableBooks.getSelectedRows());
+                }
+            }
+        });
+
+
 
         setModelsToTables();
         setEditableCells();
@@ -137,6 +161,14 @@ public class MainWindow {
         });
 
         loadAllDataFromDB();
+
+        thisWindow.getModelBooks().addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                if (thisWindow.isSaveAble())
+                    saveAllDataToDB();
+            }
+        });
     }
 
 
@@ -177,13 +209,13 @@ public class MainWindow {
         tableDisks.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(typeComboBox));
     }
 
-    private static void loadAllDataFromDB()
+    public static void loadAllDataFromDB()
     {
         LoadFromDBSwingWorker swingWorker = new LoadFromDBSwingWorker();
         swingWorker.execute();
     }
 
-    private static void saveAllDataToDB()
+    public static void saveAllDataToDB()
     {
         SaveToDBSwingWorker swingWorker = new SaveToDBSwingWorker();
         swingWorker.execute();

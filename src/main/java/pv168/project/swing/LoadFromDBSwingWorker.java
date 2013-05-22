@@ -1,5 +1,7 @@
 package pv168.project.swing;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pv168.project.Book;
 import pv168.project.Disk;
 import pv168.project.Entity;
@@ -16,6 +18,8 @@ import java.util.concurrent.ExecutionException;
  * To change this template use File | Settings | File Templates.
  */
 public class LoadFromDBSwingWorker extends SwingWorker<List<Entity>,Void> {
+
+    final static Logger log = LoggerFactory.getLogger(LoadFromDBSwingWorker.class);
 
     @Override
     protected List<Entity> doInBackground() throws Exception {
@@ -43,6 +47,9 @@ public class LoadFromDBSwingWorker extends SwingWorker<List<Entity>,Void> {
                 }
             }
 
+           log.info("Data were loaded from DB and added to models.");
+
+           MainWindow.thisWindow.setSaveAble(true);
 
         } catch (ExecutionException ex) {
             //TODO log it

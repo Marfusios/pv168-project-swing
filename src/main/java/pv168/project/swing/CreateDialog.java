@@ -1,24 +1,29 @@
 package pv168.project.swing;
 
+import pv168.project.Book;
 import pv168.project.GenreEnum;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class CreateDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField textField1;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JComboBox comboBox1;
+    private JTextField tfTittle;
+    private JTextField tfAuthor;
+    private JTextField tfReleaseYear;
+    private JComboBox cbGenre;
+
+    private Book inputBook = null;
 
     public CreateDialog() {
         setContentPane(contentPane);
         setModal(true);
+        setPreferredSize(new Dimension(300, 200));
         getRootPane().setDefaultButton(buttonOK);
 
-        comboBox1.setModel(new DefaultComboBoxModel(GenreEnum.values()));
+        cbGenre.setModel(new DefaultComboBoxModel(GenreEnum.values()));
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -47,13 +52,40 @@ public class CreateDialog extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
+    public CreateDialog(Book input)
+    {
+        this();
+
+        inputBook = input;
+
+        tfAuthor.setText(inputBook.getAuthor());
+        tfTittle.setText(inputBook.getName());
+
+        if(inputBook.getGenre() != null)
+        {
+            cbGenre.setSelectedItem(inputBook.getGenre());
+        }
+    }
+
     private void onOK() {
-// add your code here
+
+        Book tmp = new Book(tfTittle.getText(), tfAuthor.getText());
+        tmp.setGenre((GenreEnum)cbGenre.getSelectedItem());
+
+        if(inputBook == null)
+        {
+            MainWindow.thisWindow.getModelBooks().addBook(tmp);
+        }
+        else
+        {
+            MainWindow.thisWindow.getModelBooks().editBook(inputBook, tmp);
+        }
+
+
         dispose();
     }
 
     private void onCancel() {
-// add your code here if necessary
         dispose();
     }
 

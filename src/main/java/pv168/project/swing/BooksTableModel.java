@@ -1,5 +1,7 @@
 package pv168.project.swing;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pv168.project.Book;
 import pv168.project.GenreEnum;
 
@@ -16,6 +18,8 @@ import java.util.ResourceBundle;
  * Time: 15:14
  */
 public class BooksTableModel extends AbstractTableModel{
+
+    final static Logger log = LoggerFactory.getLogger(BooksTableModel.class);
 
     private List<Book> books = new ArrayList<Book>();
 
@@ -98,16 +102,62 @@ public class BooksTableModel extends AbstractTableModel{
         fireTableRowsInserted(lastRow, lastRow);
     }
 
-    public void addBooks(List<Book> input)
-    {
-        this.books = input;
-    }
-
     public void removeAll()
     {
         this.books.clear();
     }
 
+    public List<Book> getAll()
+    {
+        return this.books;
+    }
+
+    public void removeAt(int index)
+    {
+        this.books.remove(index);
+
+        fireTableRowsDeleted(index, index);
+    }
+
+    public void removeAt(int[] indexes)
+    {
+        if(indexes.length > 0)
+        {
+            log.info("Books: " + books.size());
+            log.info("Selected: " + indexes.length);
+
+           for(int i : indexes)
+           {
+               // TODO problem with deleting last item, fix it
+               books.remove(i);
+           }
+
+           int firstRow, lastRow;
+           if(indexes.length == 1)
+               firstRow = lastRow = indexes[0];
+           else
+           {
+               firstRow = indexes[0];
+               lastRow = indexes[indexes.length-1];
+           }
+
+           fireTableRowsDeleted(firstRow, lastRow);
+        }
+    }
+
+    public void editBook(Book oldBook, Book newBook)
+    {
+       if(books.remove(oldBook))
+       {
+           books.add(newBook);
+           fireTableDataChanged();
+       }
+    }
+
+    public Book getBookAt(int index)
+    {
+        return books.get(index);
+    }
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
