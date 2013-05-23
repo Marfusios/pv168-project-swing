@@ -8,6 +8,7 @@ import pv168.project.TypeEnum;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
 
 public class DiskDialog extends JDialog {
     private JPanel contentPane;
@@ -15,7 +16,7 @@ public class DiskDialog extends JDialog {
     private JButton buttonCancel;
     private JTextField tfAuthor;
     private JTextField tfName;
-    private JTextField tfPages;
+    private JTextField tfPosition;
     private JTextField tfYear;
     private JComboBox cbGenre;
     private JComboBox cbType;
@@ -26,7 +27,7 @@ public class DiskDialog extends JDialog {
     public DiskDialog() {
         setContentPane(contentPane);
         setModal(true);
-        setPreferredSize(new Dimension(300, 200));
+        setPreferredSize(new Dimension(400, 250));
         pack();
         getRootPane().setDefaultButton(buttonOK);
 
@@ -69,6 +70,19 @@ public class DiskDialog extends JDialog {
 
         tfAuthor.setText(inputDisk.getAuthor());
         tfName.setText(inputDisk.getName());
+        tfPosition.setText(inputDisk.getPosition());
+
+        if(inputDisk.getReleaseYear() != null){
+            tfYear.setText(inputDisk.getReleaseYear().toString());
+        }
+
+        if(inputDisk.getKind() != null){
+            cbKInd.setSelectedItem(inputDisk.getKind());
+        }
+
+        if(inputDisk.getType() != null){
+            cbType.setSelectedItem(inputDisk.getType());
+        }
 
         if(inputDisk.getGenre() != null)
         {
