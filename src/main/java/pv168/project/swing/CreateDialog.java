@@ -14,13 +14,15 @@ public class CreateDialog extends JDialog {
     private JTextField tfAuthor;
     private JTextField tfReleaseYear;
     private JComboBox cbGenre;
+    private JTextField tfPosition;
+    private JTextField tfPage;
 
     private Book inputBook = null;
 
     public CreateDialog() {
         setContentPane(contentPane);
         setModal(true);
-        setPreferredSize(new Dimension(300, 200));
+        setPreferredSize(new Dimension(300, 250));
         pack();
         getRootPane().setDefaultButton(buttonOK);
 
@@ -61,6 +63,14 @@ public class CreateDialog extends JDialog {
 
         tfAuthor.setText(inputBook.getAuthor());
         tfTittle.setText(inputBook.getName());
+        tfPage.setText(Integer.toString(inputBook.getPageCount()));
+        tfPosition.setText(inputBook.getPosition());
+
+        if(inputBook.getReleaseYear() != null)
+        {
+            tfReleaseYear.setText(inputBook.getReleaseYear().toString());
+        }
+
 
         if(inputBook.getGenre() != null)
         {
@@ -70,8 +80,43 @@ public class CreateDialog extends JDialog {
 
     private void onOK() {
 
+        if(("").equals(tfAuthor.getText()))
+        {
+            tfAuthor.setBackground(Color.red);
+            return;
+        }
+        else
+        {
+            tfAuthor.setBackground(Color.white);
+        }
+
+
+        if(("").equals(tfTittle.getText()))
+        {
+            tfTittle.setBackground(Color.red);
+            return;
+        }
+        else
+        {
+            tfTittle.setBackground(Color.white);
+        }
+
+
         Book tmp = new Book(tfTittle.getText(), tfAuthor.getText());
         tmp.setGenre((GenreEnum)cbGenre.getSelectedItem());
+
+        try {
+        int pg = Integer.parseInt(tfPage.getText());
+        tmp.setPageCount(pg);
+        }
+        catch(Exception ex)
+        {
+            tfPage.setBackground(Color.red);
+            return;
+        }
+        tfPage.setBackground(Color.white);
+
+        tmp.setPosition(tfPosition.getText());
 
         if(inputBook == null)
         {

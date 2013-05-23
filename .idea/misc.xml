@@ -9,6 +9,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$USER_HOME$/pv168-project/pom.xml" />
+        <option value="$PROJECT_DIR$/../pv168-project/pom.xml" />
       </list>
     </option>
   </component>

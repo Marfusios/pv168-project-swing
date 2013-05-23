@@ -2,7 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$USER_HOME$/pv168-project" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../pv168-project" vcs="Git" />
   </component>
 </project>
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../pv168-project/pv168-project.iml" filepath="$PROJECT_DIR$/../pv168-project/pv168-project.iml" />
       <module fileurl="file://$USER_HOME$/pv168-project/pv168-project.iml" filepath="$USER_HOME$/pv168-project/pv168-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/pv168-project-swing.iml" filepath="$PROJECT_DIR$/pv168-project-swing.iml" />
     </modules>
