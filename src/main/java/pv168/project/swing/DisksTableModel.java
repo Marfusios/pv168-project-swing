@@ -1,5 +1,7 @@
 package pv168.project.swing;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pv168.project.Disk;
 import pv168.project.GenreEnum;
 import pv168.project.KindEnum;
@@ -15,6 +17,8 @@ import java.util.*;
  * Time: 15:14
  */
 public class DisksTableModel extends AbstractTableModel{
+
+    final static Logger log = LoggerFactory.getLogger(DisksTableModel.class);
 
     private List<Disk> disks = new ArrayList<Disk>();
 
@@ -120,6 +124,35 @@ public class DisksTableModel extends AbstractTableModel{
     public List<Disk> getAll()
     {
         return disks;
+    }
+
+    public Disk getDiskAt(int index)
+    {
+        return disks.get(index);
+    }
+
+    public void removeAt(int[] indexes)
+    {
+        if(indexes.length > 0)
+        {
+            log.info("Books: " + disks.size());
+            log.info("Selected: " + indexes.length);
+
+            for(Integer i =indexes.length-1;i>=0;i--){
+                disks.remove(indexes[i]);
+            }
+
+            int firstRow, lastRow;
+            if(indexes.length == 1)
+                firstRow = lastRow = indexes[0];
+            else
+            {
+                firstRow = indexes[0];
+                lastRow = indexes[indexes.length-1];
+            }
+
+            fireTableRowsDeleted(firstRow, lastRow);
+        }
     }
 
 

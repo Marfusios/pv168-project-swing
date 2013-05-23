@@ -92,8 +92,35 @@ public class DiskDialog extends JDialog {
 
     private void onOK() {
 
+        if(("").equals(tfAuthor.getText()))
+        {
+            tfAuthor.setBackground(Color.red);
+            return;
+        }
+        else
+        {
+            tfAuthor.setBackground(Color.white);
+        }
+
+
+        if(("").equals(tfName.getText()))
+        {
+            tfName.setBackground(Color.red);
+            return;
+        }
+        else
+        {
+            tfName.setBackground(Color.white);
+        }
+
+
         Disk tmp = new Disk(tfName.getText(), tfAuthor.getText());
         tmp.setGenre((GenreEnum)cbGenre.getSelectedItem());
+
+        tmp.setKind((KindEnum)cbKInd.getSelectedItem());
+        tmp.setType((TypeEnum)cbType.getSelectedItem());
+
+        tmp.setPosition(tfPosition.getText());
 
         if(inputDisk == null)
         {

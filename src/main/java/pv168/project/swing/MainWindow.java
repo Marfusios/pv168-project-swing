@@ -96,6 +96,26 @@ public class MainWindow {
             }
         });
 
+        diskUpdateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tableDisks.getSelectedRow() >= 0)
+                {
+                    new DiskDialog(modelDisks.getDiskAt(tableDisks.getSelectedRow())).setVisible(true);
+                }
+            }
+        });
+
+        diskDeleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tableDisks.getSelectedRow() >= 0)
+                {
+                    modelDisks.removeAt(tableDisks.getSelectedRows());
+                }
+            }
+        });
+
         setModelsToTables();
         setEditableCells();
     }
@@ -168,6 +188,14 @@ public class MainWindow {
         loadAllDataFromDB();
 
         thisWindow.getModelBooks().addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                if (thisWindow.isSaveAble())
+                    saveAllDataToDB();
+            }
+        });
+
+        thisWindow.getModelDisks().addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent e) {
                 if (thisWindow.isSaveAble())
