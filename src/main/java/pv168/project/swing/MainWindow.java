@@ -89,7 +89,12 @@ public class MainWindow {
             }
         });
 
-
+        diskCreateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new DiskDialog().setVisible(true);
+            }
+        });
 
         setModelsToTables();
         setEditableCells();

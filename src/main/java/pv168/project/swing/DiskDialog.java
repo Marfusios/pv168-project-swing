@@ -1,23 +1,29 @@
 package pv168.project.swing;
 
-import pv168.project.Book;
+import pv168.project.Disk;
 import pv168.project.GenreEnum;
+import pv168.project.KindEnum;
+import pv168.project.TypeEnum;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class CreateDialog extends JDialog {
+public class DiskDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField tfTittle;
     private JTextField tfAuthor;
-    private JTextField tfReleaseYear;
+    private JTextField tfName;
+    private JTextField tfPages;
+    private JTextField tfYear;
     private JComboBox cbGenre;
+    private JComboBox cbType;
+    private JComboBox cbKInd;
 
-    private Book inputBook = null;
+    private Disk inputDisk = null;
 
-    public CreateDialog() {
+    public DiskDialog() {
         setContentPane(contentPane);
         setModal(true);
         setPreferredSize(new Dimension(300, 200));
@@ -25,6 +31,8 @@ public class CreateDialog extends JDialog {
         getRootPane().setDefaultButton(buttonOK);
 
         cbGenre.setModel(new DefaultComboBoxModel(GenreEnum.values()));
+        cbKInd.setModel(new DefaultComboBoxModel(KindEnum.values()));
+        cbType.setModel(new DefaultComboBoxModel(TypeEnum.values()));
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -53,33 +61,33 @@ public class CreateDialog extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    public CreateDialog(Book input)
+    public DiskDialog(Disk input)
     {
         this();
 
-        inputBook = input;
+        inputDisk = input;
 
-        tfAuthor.setText(inputBook.getAuthor());
-        tfTittle.setText(inputBook.getName());
+        tfAuthor.setText(inputDisk.getAuthor());
+        tfName.setText(inputDisk.getName());
 
-        if(inputBook.getGenre() != null)
+        if(inputDisk.getGenre() != null)
         {
-            cbGenre.setSelectedItem(inputBook.getGenre());
+            cbGenre.setSelectedItem(inputDisk.getGenre());
         }
     }
 
     private void onOK() {
 
-        Book tmp = new Book(tfTittle.getText(), tfAuthor.getText());
+        Disk tmp = new Disk(tfName.getText(), tfAuthor.getText());
         tmp.setGenre((GenreEnum)cbGenre.getSelectedItem());
 
-        if(inputBook == null)
+        if(inputDisk == null)
         {
-            MainWindow.thisWindow.getModelBooks().addBook(tmp);
+            MainWindow.thisWindow.getModelDisks().addDisk(tmp);
         }
         else
         {
-            MainWindow.thisWindow.getModelBooks().editBook(inputBook, tmp);
+            MainWindow.thisWindow.getModelDisks().editDisk(inputDisk, tmp);
         }
 
 
@@ -89,6 +97,4 @@ public class CreateDialog extends JDialog {
     private void onCancel() {
         dispose();
     }
-
-
 }

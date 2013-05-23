@@ -103,6 +103,15 @@ public class DisksTableModel extends AbstractTableModel{
         fireTableRowsInserted(lastRow, lastRow);
     }
 
+    public void editDisk(Disk oldDisk, Disk newDisk)
+    {
+        if(disks.remove(oldDisk))
+        {
+            disks.add(newDisk);
+            fireTableDataChanged();
+        }
+    }
+
     public void removeAll()
     {
         this.disks.clear();

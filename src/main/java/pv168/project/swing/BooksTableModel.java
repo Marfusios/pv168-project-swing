@@ -126,10 +126,8 @@ public class BooksTableModel extends AbstractTableModel{
             log.info("Books: " + books.size());
             log.info("Selected: " + indexes.length);
 
-           for(int i : indexes)
-           {
-               // TODO problem with deleting last item, fix it
-               books.remove(i);
+           for(Integer i =indexes.length-1;i>=0;i--){
+               books.remove(indexes[i]);
            }
 
            int firstRow, lastRow;
