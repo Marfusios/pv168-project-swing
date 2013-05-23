@@ -28,6 +28,7 @@ public class DiskDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         setPreferredSize(new Dimension(400, 250));
+        MainWindow.centreWindow(this);
         pack();
         getRootPane().setDefaultButton(buttonOK);
 

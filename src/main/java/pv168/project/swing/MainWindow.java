@@ -168,6 +168,13 @@ public class MainWindow {
         return menuBar;
     }
 
+    public static void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
+    }
+
     public static void main(String[] args) {
         final ResourceBundle rb = ResourceBundle.getBundle("pv168.project.swing.Bundle");
         thisWindow = new MainWindow();
@@ -182,6 +189,8 @@ public class MainWindow {
                 frame.pack();
                 frame.setVisible(true);
                 frame.setJMenuBar(thisWindow.createMenu());
+
+                centreWindow(frame);
             }
         });
 

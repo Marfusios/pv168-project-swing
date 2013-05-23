@@ -23,6 +23,7 @@ public class CreateDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         setPreferredSize(new Dimension(300, 250));
+        MainWindow.centreWindow(this);
         pack();
         getRootPane().setDefaultButton(buttonOK);
 
